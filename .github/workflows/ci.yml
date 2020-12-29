@@ -1,0 +1,38 @@
+name: Source Code Check
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+          pipenv sync --dev
+      - name: Check with black
+        run: pipenv run black
+      - name: Check with mypy
+        run: pipenv run mypy
+      - name: Check with flake8
+        run: pipenv run flake8
+      - name: Check with isort
+        run: pipenv run isort
+      - name: Check with test
+        run: pipenv run test
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
