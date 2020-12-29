@@ -5,6 +5,14 @@
 
 Template project to follow Zen of Python
 
-Tips
+## Tools
+
+- flake8
+- black
+- isort
+- mypy
+- pytest
+
+**Tips**
 
 - [`pyproject.toml` exists for black](https://github.com/psf/black/issues/683)
