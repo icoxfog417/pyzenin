@@ -15,14 +15,14 @@ pytest-mock = "*"
 
 [requires]
 python_version = "3.8"
-# You should change "modules" as your project
 
 [scripts]
+# You should change "modules" as your project
 black = "black . --check"
-mypy = "mypy modules"
+mypy = "mypy ."
 flake8 = "flake8 ."
 isort = "isort -c ."
-test = "pytest -vv --cov=modules --cov-report=term-missing --cov-report=xml --ignore functions"
+test = "pytest -vv --cov=modules --cov-report=term-missing --cov-report=xml tests/"
 
 [pipenv]
 allow_prereleases = true

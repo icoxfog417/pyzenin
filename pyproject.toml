@@ -1,3 +1,17 @@
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+# Add this setting if want to ignore missing_imports etc
+# overrides = [
+#    { ignore_missing_imports=true, module="pyconll" },
+#    { warn_unused_ignores=false, module="pyconll" },
+# ]
+
+[tool.isort]
+profile = "black"
+include_trailing_comma = true
+multi_line_output = 3
+
 [tool.black]
 exclude = '''
 /(
